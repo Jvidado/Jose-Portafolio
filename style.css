@@ -1,0 +1,135 @@
+/* Estilos base */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #faf5e6; /* Color papel técnico */
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    color: #2c3e50;
+    overflow-x: hidden;
+}
+
+/* Sistema de marcos técnicos */
+.technical-frame {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    border: 15px solid #000000; /* Bordes del marco */
+    box-sizing: border-box;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Contenido principal */
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 80px;
+    margin: 50px;
+    background-color: inherit;
+}
+
+/* Sección de información */
+.info-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.profile-pic {
+    width: 240px;
+    height: 240px;
+    border: 8px solid #000000;
+    padding: 5px;
+    background: #fff;
+    box-shadow: 4px 4px 0 #000000;
+}
+
+.info-text {
+    border-left: 3px solid #000000;
+    padding-left: 30px;
+}
+
+/* 📌 Ajuste de la galería de proyectos */
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Empuja los cuadros más a la derecha */
+    margin-left: 100px; /* Mueve la galería a la derecha */
+}
+
+/* Cuadros de proyectos */
+.project {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 3px solid #000;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project .description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Expande el proyecto */
+.project.expanded {
+    transform: scale(1.2); /* Expande el cuadro */
+    z-index: 10;
+}
+
+/* Muestra la descripción solo cuando está expandido */
+.project.expanded .description {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .portfolio {
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+
+
