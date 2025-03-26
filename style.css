@@ -1,132 +1,341 @@
-/* Estilos base */
+/* ESTILOS GENERALES */
 body {
     margin: 0;
     padding: 0;
-    background-color: #faf5e6; /* Color papel técnico */
-    min-height: 100vh;
-    font-family: 'Courier New', monospace;
-    color: #2c3e50;
-    overflow-x: hidden;
+    background-color: #f5e6c8;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
 }
 
-/* Sistema de marcos técnicos */
-.technical-frame {
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    border: 15px solid #000000; /* Bordes del marco */
-    box-sizing: border-box;
-    z-index: 1000;
-    pointer-events: none;
+.container {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background: #f5e6c8;
+    border-radius: 10px;
+    border: 2px solid #333;
+    outline: 2px solid #f5e6c8;
+    box-shadow: 0 0 0 5px #333;
 }
 
-/* Contenido principal */
-.content {
-    position: relative;
-    z-index: 2;
-    padding: 80px;
-    margin: 50px;
-    background-color: inherit;
-}
-
-/* Sección de información */
-.info-section {
+/* SECCIÓN PERFIL */
+.perfil {
     display: flex;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 60px;
-}
-
-.profile-pic {
-    width: 240px;
-    height: 240px;
-    border: 8px solid #000000;
-    padding: 5px;
-    background: #fff;
-    box-shadow: 4px 4px 0 #000000;
-}
-
-.info-text {
-    border-left: 3px solid #000000;
-    padding-left: 30px;
-}
-
-/* 📌 Ajuste de la galería de proyectos */
-.portfolio {
-    display: flex;
-    flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start; /* Empuja los cuadros más a la derecha */
-    margin-left: 100px; /* Mueve la galería a la derecha */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-/* Cuadros de proyectos */
-.project {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border: 3px solid #000;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-}
-
-.project img {
-    width: 100%;
-    height: 100%;
+.perfil img {
+    width: 100px;
+    height: 100px;
     object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid #333;
 }
 
-.project .description {
-    position: absolute;
-    bottom: 0;
+.info h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+.info p {
+    font-size: 16px;
+    color: #927633;
+}
+
+/* SECCIÓN PROYECTOS */
+.proyectos h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.proyecto {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f5e6c8;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 2px solid #333;
+}
+
+.proyecto:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-img {
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #333;
+    display: block; /* Importante para eventos click */
+}
+
+.project-img:hover {
+    transform: scale(1.05);
+}
+
+.descripcion h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.descripcion p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 0;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.lightbox.active {
+    display: flex !important; /* Fuerza la visualización */
+}
+
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: default;
+}
+
+.close-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 40px;
     color: white;
-    font-size: 14px;
-    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ccc;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.prev-btn { left: 30px; }
+.next-btn { right: 30px; }
+
+/* SECCIÓN SOBRE MÍ */
+.about-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #f8f5f0;
+    border-radius: 10px;
+    border: 3px solid black;
+    outline: 6px solid white;
     text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-/* Expande el proyecto */
-.project.expanded {
-    transform: scale(1.2); /* Expande el cuadro */
-    z-index: 10;
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
-/* Muestra la descripción solo cuando está expandido */
-.project.expanded .description {
-    opacity: 1;
-    visibility: visible;
+.about-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid black;
 }
 
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .portfolio {
-        margin-left: 50px;
-    }
+.about-content p {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    color: #333;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .portfolio {
-        justify-content: center;
-        margin-left: 0;
+    .container {
+        max-width: 95%;
+        margin: 20px auto;
+    }
+
+    .perfil {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .proyecto {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .prev-btn, .next-btn {
+        font-size: 30px;
+        padding: 10px 15px;
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-img {
+        width: 120px;
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .portfolio {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .lightbox-img {
+        max-width: 95%;
     }
+    
+    .prev-btn, .next-btn {
+        font-size: 25px;
+        padding: 8px 12px;
+    }
+}
+/* Estilos del botón */
+.galeria-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background: #333;
+    color: white;
+    border: 2px solid #333;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.galeria-btn:hover {
+    background: #f5e6c8;
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Ajustes lightbox */
+.lightbox-img {
+    max-width: 85%;
+    max-height: 80vh;
+    object-fit: contain;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Estilos del carrusel */
+.carrusel-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrusel-overlay.active {
+    display: flex;
+}
+
+.swiper {
+    width: 80%;
+    height: 80%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.carrusel-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cerrar-carrusel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 
