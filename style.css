@@ -1,344 +1,130 @@
-/* ESTILOS GENERALES */
+/* ==== ESTILO GENERAL ==== */
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f5e6c8;
-    font-family: "Poppins", sans-serif;
-    line-height: 1.6;
+  background-color: #1e1e1e;
+  color: #00ffff;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-    max-width: 90%;
-    margin: 40px auto;
-    padding: 30px;
-    background: #f5e6c8;
-    border-radius: 10px;
-    border: 2px solid #333;
-    outline: 2px solid #f5e6c8;
-    box-shadow: 0 0 0 5px #333;
+/* ==== MARCO TÉCNICO ==== */
+.marco-tecnico {
+  border: 2px solid #00ffff;
+  margin: 20px;
+  padding: 20px;
+  max-width: 2000px;
 }
 
-/* SECCIÓN PERFIL */
-.perfil {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+/* ==== ENCABEZADO ==== */
+.encabezado {
+  border-bottom: 1px dashed #00ffff;
+  padding-bottom: 10px;
 }
 
-.perfil img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 2px solid #333;
+/* ==== FOTO DE AMIGO ==== */
+.foto-amigo {
+  width: 120px;
+  height: auto;
+  border: 1px dashed #00ffff;
+  margin: 10px 0;
+  display: block;
 }
 
-.info h1 {
-    font-size: 26px;
-    font-weight: 600;
-    margin: 0;
-    color: #333;
+/* ==== TÍTULOS ==== */
+h1, h2 {
+  text-transform: uppercase;
+  margin: 10px 0;
 }
 
-.info p {
-    font-size: 16px;
-    color: #927633;
+.contenedor-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap; /* Opcional, para que en móviles se acomode vertical */
 }
 
-/* SECCIÓN PROYECTOS */
-.proyectos h2 {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: #333;
+.grid-proyectos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
 }
 
+.informacion {
+  width: 600px;
+  background-color: #2c2c2c;
+  padding: 60px;
+  border: 1px dashed #00ffff;
+  color: #ffffff;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.informacion h3 {
+  font-size: 20px;
+  color: #00ffff;
+}
+
+.informacion ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.informacion ul li {
+  font-size: 20px;
+}
+/* ==== PROYECTO INDIVIDUAL ==== */
 .proyecto {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: #f5e6c8;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: 2px solid #333;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border: 1px dashed #00ffff;
+  padding: 10px;
+  width: fit-content;
 }
 
-.proyecto:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+/* ==== IMÁGENES DE PROYECTO ==== */
+.proyecto img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px dashed #00ffff;
+  transition: transform 0.3s ease, z-index 0s;
 }
 
-.project-img {
-    cursor: pointer;
-    transition: transform 0.3s;
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
-    border: 2px solid #333;
-    display: block; /* Importante para eventos click */
+/* ==== Efecto para expandir la imagen ==== */
+.proyecto img.expandir:active {
+  transform: scale(2);  /* Ampliamos la imagen */
+  z-index: 9999;  /* Aseguramos que la imagen se sitúe encima del contenido */
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2); /* Centrado con ampliación */
 }
 
-.project-img:hover {
-    transform: scale(1.05);
+/* ==== DESCRIPCIÓN DE PROYECTO ==== */
+.descripcion {
+  max-width: 500px;
 }
 
 .descripcion h3 {
-    font-size: 18px;
-    margin: 0;
-    color: #333;
+  margin: 0;
+  font-size: 18px;
+  color: #00ffff;
 }
 
 .descripcion p {
-    font-size: 14px;
-    color: #666;
-    margin: 10px 0 0;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-/* LIGHTBOX */
-.lightbox {
-    display: none; /* Inicialmente oculto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+/* ==== LEYENDA FINAL ==== */
+.leyenda {
+  border-top: 1px dashed #00ffff;
+  padding-top: 10px;
+  margin-top: 20px;
 }
-.lightbox.active {
-    display: flex !important; /* Fuerza la visualización */
-}
-
-
-.lightbox-img {
-    max-width: 90%;
-    max-height: 90vh;
-    object-fit: contain;
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: default;
-}
-
-.close-btn {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-btn:hover {
-    color: #ccc;
-}
-
-.prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 40px;
-    color: white;
-    background: rgba(0, 0, 0, 0.3);
-    border: none;
-    padding: 15px 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 5px;
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.prev-btn { left: 30px; }
-.next-btn { right: 30px; }
-
-/* SECCIÓN SOBRE MÍ */
-.about-section {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 40px;
-    background: #f8f5f0;
-    border-radius: 10px;
-    border: 3px solid black;
-    outline: 6px solid white;
-    text-align: center;
-}
-
-.about-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.about-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
-.about-content p {
-    max-width: 600px;
-    font-size: 16px;
-    line-height: 1.6;
-    text-align: justify;
-    color: #333;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .container {
-        max-width: 95%;
-        margin: 20px auto;
-    }
-
-    .perfil {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .proyecto {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .project-img {
-        width: 100%;
-        height: 200px;
-    }
-
-    .prev-btn, .next-btn {
-        font-size: 30px;
-        padding: 10px 15px;
-    }
-
-    .close-btn {
-        top: 15px;
-        right: 20px;
-        font-size: 30px;
-    }
-
-    .about-content {
-        flex-direction: column;
-    }
-
-    .about-img {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .lightbox-img {
-        max-width: 95%;
-    }
-    
-    .prev-btn, .next-btn {
-        font-size: 25px;
-        padding: 8px 12px;
-    }
-}
-/* Estilos del botón */
-.galeria-btn {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    background: #333;
-    color: white;
-    border: 2px solid #333;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.galeria-btn:hover {
-    background: #f5e6c8;
-    color: #333;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* Ajustes lightbox */
-.lightbox-img {
-    max-width: 85%;
-    max-height: 80vh;
-    object-fit: contain;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-/* Estilos del carrusel */
-.carrusel-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.carrusel-overlay.active {
-    display: flex;
-}
-
-.swiper {
-    width: 80%;
-    height: 80%;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.carrusel-btn {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.cerrar-carrusel {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ff0000;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-
-
-
-
